@@ -1,0 +1,15 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+
+    <!-- Common UI elements -->
+    <UI Id="MyUICommon">
+      <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
+      <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="11" Bold="yes" />
+      <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
+
+      <!-- Reference the dialogs we are going to use in the installer UI workflow -->
+      <DialogRef Id="ErrorDlg" />
+    </UI>
+
+  </Fragment>
+</Wix>

@@ -1,0 +1,28 @@
+﻿<Project Sdk="WixToolset.Sdk/4.0.3">
+  <Import Project="Sdk.props" Sdk="WixToolset.Sdk" Version="4.0.3" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProductVersion>1.0</ProductVersion>
+    <OutputName>MyApp1</OutputName>
+    <Name>MyApp1</Name>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <TargetFrameworks>net472</TargetFrameworks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MySourceRoot>..\..</MySourceRoot>
+  </PropertyGroup>
+  <Import Project="$(MySourceRoot)\GEO.CSharp.sdk.targets" />
+  <PropertyGroup Condition=" '$(Platform)' == 'x64' ">
+    <MySourceRoot>..\..</MySourceRoot>
+    <PlatformName>$(Platform)</PlatformName>
+    <OutputPath>$(MySourceRoot)\_MyInstallers\</OutputPath>
+    <DefineConstants>MySourceRoot=$(MySourceRoot);MyOutputDirectory=$(MyOutputDirectory);MyAppVersion=$(MyAppVersion)</DefineConstants>
+    <SuppressPdbOutput>True</SuppressPdbOutput>
+    <SuppressIces>ICE80</SuppressIces>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.UI.wixext" Version="4.0.3" />
+    <PackageReference Include="WixToolset.Util.wixext" Version="4.0.3" />
+  </ItemGroup>
+</Project>
