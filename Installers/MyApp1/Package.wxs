@@ -1,10 +1,32 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
-     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-  <Package Name="MyApp1" Manufacturer="TODO Manufacturer" Version="1.0.0.0" UpgradeCode="bf00b3c7-3475-4743-ac72-68d9063eda45">
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui"
+     xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util"   
+  >
+  <!--
+  xmlns:vs="http://wixtoolset.org/schemas/v4/wxs/vs"
+  xmlns:netfx="http://wixtoolset.org/schemas/v4/wxs/netfx"
+  -->
+
+  <!-- Issue 2: Binding of parameter version also does not work :( -->
+  <!--<?define ProductVersion="$(fileVersion.FileVersion('C:/Program Files/dotnet/dotnet.exe'))"?>-->
+  <!--
+  === Getting error ===
+    Severity	Code	Description	Project	File	Line	Suppression State	Details
+    Error	WIX0235	Undefined preprocessor function '$(fileVersion.FileVersion('C:/Program Files/dotnet/dotnet.exe'))'.	MyApp1	C:\dev\git-hub\wix_installer_issue_7925\wix_installer_issue_7925\Installers\MyApp1\Package.wxs	11
+  
+  === Usage ===
+  In Package modify:
+    Name="MyApp1 $(var.ProductVersion)"
+  And in Package: 
+    Version="!(bind.ProductVersion)"
+  -->
+  
+  <Package Name="MyApp1" Manufacturer="TODO Manufacturer" 
+           Version="1.0.0"
+           UpgradeCode="bf00b3c7-3475-4743-ac72-68d9063eda45">
+    
     <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed." Schedule="afterInstallInitialize" />
     <Media Id="1" Cabinet="MyApp.cab" EmbedCab="yes" />
-
-    
     
     <!-- In WIX v3 <UIRef Id="MyUICommon" />; Wiki: https://github.com/wixtoolset/issues/issues/6998 -->
     <!--
@@ -12,11 +34,11 @@
     <UIRef  Id="MyUICommon" />
     -->
     
-    <!-- WIX v4 : Issue: https://github.com/wixtoolset/issues/issues/7925-->
+    <!-- Issue 1: WIX v4 : Issue: https://github.com/wixtoolset/issues/issues/7925-->
     <!-- That MSI would build successfully comment two lines below -->
     <UIRef Id="WixUI_Common" />
     <ui:WixUI Id="MyUICommon" />
-
+    
     <UI />
       
     <Feature Id="Main">

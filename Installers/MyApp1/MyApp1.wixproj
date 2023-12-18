@@ -12,7 +12,7 @@
   <PropertyGroup>
     <MySourceRoot>..\..</MySourceRoot>
   </PropertyGroup>
-  <Import Project="$(MySourceRoot)\GEO.CSharp.sdk.targets" />
+  <Import Project="$(MySourceRoot)\Common.CSharp.sdk.targets" />
   <PropertyGroup Condition=" '$(Platform)' == 'x64' ">
     <MySourceRoot>..\..</MySourceRoot>
     <PlatformName>$(Platform)</PlatformName>
