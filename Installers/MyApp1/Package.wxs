@@ -36,8 +36,8 @@
     
     <!-- Issue 1: WIX v4 : Issue: https://github.com/wixtoolset/issues/issues/7925-->
     <!-- That MSI would build successfully comment two lines below -->
-    <UIRef Id="WixUI_Common" />
-    <ui:WixUI Id="MyUICommon" />
+    <!--<UIRef Id="WixUI_Common" />
+    <ui:WixUI Id="MyUICommon" />-->
     
     <UI />
       

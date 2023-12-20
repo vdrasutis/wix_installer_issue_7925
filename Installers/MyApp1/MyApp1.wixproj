@@ -1,5 +1,5 @@
 ﻿<Project Sdk="WixToolset.Sdk/4.0.3">
-  <Import Project="Sdk.props" Sdk="WixToolset.Sdk" Version="4.0.3" />
+  <!--<Import Project="Sdk.props" Sdk="WixToolset.Sdk" Version="4.0.3" />-->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
@@ -12,7 +12,9 @@
   <PropertyGroup>
     <MySourceRoot>..\..</MySourceRoot>
   </PropertyGroup>
+  
   <Import Project="$(MySourceRoot)\Common.CSharp.sdk.targets" />
+  
   <PropertyGroup Condition=" '$(Platform)' == 'x64' ">
     <MySourceRoot>..\..</MySourceRoot>
     <PlatformName>$(Platform)</PlatformName>
